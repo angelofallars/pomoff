@@ -66,12 +66,36 @@ def main():
         print("[q] Quit")
         char = getch().lower()
 
+        # ===============
+        # = WORK TIME   =
+        # ===============
         if char == "j":
             start_interval(work_time)
+            os.system(f"zenity --icon-name=emblem-success --warning \
+                       --width=200 --text \
+                       'WORK TIME OVER\n{WORK_TIME_DURATION} minutes has passed'")
+
+        # ===============
+        # = SHORT BREAK =
+        # ===============
         if char == "k":
             start_interval(short_break)
+            os.system(f"zenity --icon-name=emblem-information --warning \
+                       --width=200 --text \
+                       'SHORT BREAK OVER\n{SHORT_BREAK_DURATION} minutes has passed'")
+
+        # ===============
+        # = LONG BREAK  =
+        # ===============
         if char == "l":
             start_interval(long_break)
+            os.system(f"zenity --icon-name=emblem-information --warning \
+                       --width=200 --text \
+                       'LONG BREAK OVER\n{LONG_BREAK_DURATION} minutes has passed'")
+
+        # ===============
+        # = QUIT        =
+        # ===============
         if char == "q":
             break
 
