@@ -74,7 +74,7 @@ def main():
             os.system(f"zenity --icon-name=emblem-success --warning \
                        --width=200 --text \
                        'WORK TIME OVER\n\
-                       {WORK_TIME} minutes has passed'")
+{WORK_TIME} minutes has passed'")
 
         # ===============
         # = SHORT BREAK =
@@ -84,7 +84,7 @@ def main():
             os.system(f"zenity --icon-name=emblem-information --warning \
                        --width=200 --text \
                        'SHORT BREAK OVER\n\
-                       {SHORT_BREAK_TIME} minutes has passed'")
+{SHORT_BREAK_TIME} minutes has passed'")
 
         # ===============
         # = LONG BREAK  =
@@ -94,7 +94,7 @@ def main():
             os.system(f"zenity --icon-name=emblem-information --warning \
                        --width=200 --text \
                        'LONG BREAK OVER\n\
-                       {LONG_BREAK_TIME} minutes has passed'")
+{LONG_BREAK_TIME} minutes has passed'")
 
         # ===============
         # = QUIT        =
