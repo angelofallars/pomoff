@@ -28,30 +28,42 @@ def start_interval(interval):
     """Start an interval (Pomodoro, short break or long break)"""
     clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
 
+    # Counter is for changing the clock hands
+    counter = 0
+
     start_time = time.perf_counter()
     elapsed_time = 0
+
+    # Last time is for the clock hands to keep it turning at a steady rate
+    last_time = 0
 
     duration_seconds = interval.duration * 60
 
     while elapsed_time < duration_seconds:
 
-        # For loop for the fancy "clock" animation
-        for i in range(len(clock_hands)):
-            current_time = time.perf_counter()
-            elapsed_time = current_time - start_time
-            remaining_time = duration_seconds - elapsed_time
+        current_time = time.perf_counter()
+        elapsed_time = current_time - start_time
+        remaining_time = duration_seconds - elapsed_time
 
-            # Ceiling instead of round so that the starting time is "25m 0s"
-            # instead of "24m 60s"
-            seconds = m.ceil(remaining_time) % 60
-            minutes = m.ceil(remaining_time) // 60
+        # Iterate through the clock hands animation
+        if elapsed_time >= last_time + 0.5:
+            counter += 1
+            last_time = elapsed_time
 
-            clear()
-            print(f"🍅 - {interval.session_type}")
-            print(f"[{clock_hands[i]}] ", end="")
-            print(f"{minutes}m {seconds}s")
+            if counter >= len(clock_hands):
+                counter = 0
 
-            time.sleep(0.50)
+        # Ceiling instead of round so that the starting time is "25m 0s"
+        # instead of "24m 60s"
+        seconds = m.ceil(remaining_time) % 60
+        minutes = m.ceil(remaining_time) // 60
+
+        clear()
+        print(f"🍅 - {interval.session_type}")
+        print(f"[{clock_hands[counter]}] ", end="")
+        print(f"{minutes}m {seconds}s")
+
+        time.sleep(0.25)
 
     return True
 
