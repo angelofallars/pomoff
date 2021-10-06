@@ -8,9 +8,6 @@ from getch import getch
 WORK_TIME = 25
 SHORT_BREAK_TIME = 5
 LONG_BREAK_TIME = 15
-WORK_TIME = 0
-SHORT_BREAK_TIME = 0
-LONG_BREAK_TIME = 0
 
 
 def clear():
