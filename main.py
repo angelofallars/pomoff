@@ -8,6 +8,9 @@ from getch import getch
 WORK_TIME = 25
 SHORT_BREAK_TIME = 5
 LONG_BREAK_TIME = 15
+WORK_TIME = 0
+SHORT_BREAK_TIME = 0
+LONG_BREAK_TIME = 0
 
 
 def clear():
@@ -16,10 +19,13 @@ def clear():
 
 
 class Interval:
-    def __init__(self, duration, session_type):
+    def __init__(self, duration, session_type, end_icon="emblem_information"):
         # self.duration is the length of the interval in minutes
         self.duration = duration
         self.session_type = session_type
+
+        # end_icon is the name of the icon used for the zenity end message
+        self.end_icon = end_icon
 
 
 def start_interval(interval):
@@ -54,8 +60,30 @@ def start_interval(interval):
     return True
 
 
+def broadcast(text, icon="emblem_information"):
+    """Broadcast a message warning to the user with Zenity.
+
+    args
+      text - The text that will be displayed on the message window
+      icon - The icon beside the text"""
+
+    os.system(f"zenity --icon-name={icon} --warning \
+               --width=200 --text '{text}'")
+
+
+def broadcast_ending(interval: Interval):
+    """Broadcast the ending of an interval with Zenity.
+
+    args
+      interval - The interval, can be work, short break or long break"""
+
+    broadcast(text=f"{interval.session_type.upper()} OVER\n\
+{interval.duration} minutes have passed.",
+              icon=interval.end_icon)
+
+
 def main():
-    work_time = Interval(WORK_TIME, "work")
+    work_time = Interval(WORK_TIME, "work", end_icon="emblem-success")
     short_break = Interval(SHORT_BREAK_TIME, "short break")
     long_break = Interval(LONG_BREAK_TIME, "long break")
 
@@ -76,54 +104,36 @@ def main():
         if char == "s":
             for i in range(4):
                 start_interval(work_time)
-                os.system(f"zenity --icon-name=emblem-success --warning \
-                           --width=200 --text \
-                           'WORK TIME OVER\n\
-{WORK_TIME} minutes has passed'")
+                broadcast_ending(work_time)
 
                 # The last break should be a long break
                 if i < 3:
                     start_interval(short_break)
-                    os.system(f"zenity --icon-name=emblem-information --warning \
-                               --width=200 --text \
-                               'SHORT BREAK OVER\n\
-{SHORT_BREAK_TIME} minutes has passed'")
+                    broadcast_ending(short_break)
                 else:
                     start_interval(long_break)
-                    os.system(f"zenity --icon-name=emblem-information --warning \
-                               --width=200 --text \
-                               'LONG BREAK OVER\n\
-{LONG_BREAK_TIME} minutes has passed'")
+                    broadcast_ending(long_break)
 
         # ===============
         # = WORK TIME   =
         # ===============
         if char == "j":
             start_interval(work_time)
-            os.system(f"zenity --icon-name=emblem-success --warning \
-                       --width=200 --text \
-                       'WORK TIME OVER\n\
-{WORK_TIME} minutes has passed'")
+            broadcast_ending(work_time)
 
         # ===============
         # = SHORT BREAK =
         # ===============
         if char == "k":
             start_interval(short_break)
-            os.system(f"zenity --icon-name=emblem-information --warning \
-                       --width=200 --text \
-                       'SHORT BREAK OVER\n\
-{SHORT_BREAK_TIME} minutes has passed'")
+            broadcast_ending(short_break)
 
         # ===============
         # = LONG BREAK  =
         # ===============
         if char == "l":
             start_interval(long_break)
-            os.system(f"zenity --icon-name=emblem-information --warning \
-                       --width=200 --text \
-                       'LONG BREAK OVER\n\
-{LONG_BREAK_TIME} minutes has passed'")
+            broadcast_ending(long_break)
 
         # ===============
         # = QUIT        =
