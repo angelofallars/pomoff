@@ -39,11 +39,13 @@ def start_interval(interval):
             elapsed_time = current_time - start_time
             remaining_time = duration_seconds - elapsed_time
 
+            # Ceiling instead of round so that the starting time is "25m 0s"
+            # instead of "24m 60s"
             seconds = m.ceil(remaining_time) % 60
             minutes = m.ceil(remaining_time) // 60
 
             clear()
-            print(f"{interval.session_type}")
+            print(f"🍅 - {interval.session_type}")
             print(f"[{clock_hands[i]}] ", end="")
             print(f"{minutes}m {seconds}s")
 
@@ -60,11 +62,38 @@ def main():
     while True:
         clear()
         print("POMODORO TIMER")
+        print(f"[s] 4-Pom Session ({WORK_TIME * 4} minutes + \
+{SHORT_BREAK_TIME * 3} minutes)")
         print(f"[j] Work time ({WORK_TIME} minutes)")
         print(f"[k] Short break ({SHORT_BREAK_TIME} minutes)")
         print(f"[l] Long break ({LONG_BREAK_TIME} minutes)")
         print("[q] Quit")
         char = getch().lower()
+
+        # ===============
+        # = SESSION     =
+        # ===============
+        if char == "s":
+            for i in range(4):
+                start_interval(work_time)
+                os.system(f"zenity --icon-name=emblem-success --warning \
+                           --width=200 --text \
+                           'WORK TIME OVER\n\
+{WORK_TIME} minutes has passed'")
+
+                # The last break should be a long break
+                if i < 3:
+                    start_interval(short_break)
+                    os.system(f"zenity --icon-name=emblem-information --warning \
+                               --width=200 --text \
+                               'SHORT BREAK OVER\n\
+{SHORT_BREAK_TIME} minutes has passed'")
+                else:
+                    start_interval(long_break)
+                    os.system(f"zenity --icon-name=emblem-information --warning \
+                               --width=200 --text \
+                               'LONG BREAK OVER\n\
+{LONG_BREAK_TIME} minutes has passed'")
 
         # ===============
         # = WORK TIME   =
