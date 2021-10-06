@@ -1,6 +1,8 @@
 import time
 import os
 import math as m
+from getch import getch
+
 
 # Durations for each Pomodoro clock part
 WORK_TIME_DURATION = 25
@@ -55,14 +57,25 @@ def main():
     short_break = Interval(SHORT_BREAK_DURATION, "short break")
     long_break = Interval(LONG_BREAK_DURATION, "long break")
 
-    start_interval(work_time)
-    start_interval(short_break)
-    start_interval(work_time)
-    start_interval(short_break)
-    start_interval(work_time)
-    start_interval(short_break)
-    start_interval(work_time)
-    start_interval(long_break)
+    while True:
+        clear()
+        print("POMODORO TIMER")
+        print(f"[j] Work time ({WORK_TIME_DURATION} minutes)")
+        print(f"[k] Short break ({WORK_TIME_DURATION} minutes)")
+        print(f"[l] Long break ({WORK_TIME_DURATION} minutes)")
+        print("[q] Quit")
+        char = getch().lower()
+
+        if char == "j":
+            start_interval(work_time)
+        if char == "k":
+            start_interval(short_break)
+        if char == "l":
+            start_interval(long_break)
+        if char == "q":
+            break
+
+    return 0
 
 
 if __name__ == "__main__":
