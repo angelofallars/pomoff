@@ -2,12 +2,7 @@ import time
 import os
 import math as m
 from getch import getch
-
-
-# Durations for each Pomodoro clock part
-WORK_TIME = 25
-SHORT_BREAK_TIME = 5
-LONG_BREAK_TIME = 15
+import config as cf
 
 
 def clear():
@@ -80,18 +75,18 @@ def broadcast_ending(interval: Interval):
 
 
 def main():
-    work_time = Interval(WORK_TIME, "work", end_icon="emblem-success")
-    short_break = Interval(SHORT_BREAK_TIME, "short break")
-    long_break = Interval(LONG_BREAK_TIME, "long break")
+    work_time = Interval(cf.work_time, "work", end_icon="emblem-success")
+    short_break = Interval(cf.short_break_time, "short break")
+    long_break = Interval(cf.long_break_time, "long break")
 
     while True:
         clear()
         print("POMODORO TIMER")
-        print(f"[s] 4-Pom Session ({WORK_TIME * 4} minutes + \
-{SHORT_BREAK_TIME * 3} minutes)")
-        print(f"[j] Work time ({WORK_TIME} minutes)")
-        print(f"[k] Short break ({SHORT_BREAK_TIME} minutes)")
-        print(f"[l] Long break ({LONG_BREAK_TIME} minutes)")
+        print(f"[s] 4-Pom Session ({cf.work_time * 4} minutes + \
+{cf.short_break_time * 3} minutes)")
+        print(f"[j] Work time ({cf.work_time} minutes)")
+        print(f"[k] Short break ({cf.short_break_time} minutes)")
+        print(f"[l] Long break ({cf.long_break_time} minutes)")
         print("[q] Quit")
         char = getch().lower()
 
