@@ -2,6 +2,13 @@
 
 Pomoff is a minimalist pomodoro timer made in Python.
 
+# Dependencies
+
+```
+python3
+zenity
+```
+
 # Run
 
 ```bash
