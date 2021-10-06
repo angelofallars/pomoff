@@ -5,9 +5,9 @@ from getch import getch
 
 
 # Durations for each Pomodoro clock part
-WORK_TIME_DURATION = 25
-SHORT_BREAK_DURATION = 5
-LONG_BREAK_DURATION = 15
+WORK_TIME = 25
+SHORT_BREAK_TIME = 5
+LONG_BREAK_TIME = 15
 
 
 def clear():
@@ -53,16 +53,16 @@ def start_interval(interval):
 
 
 def main():
-    work_time = Interval(WORK_TIME_DURATION, "work")
-    short_break = Interval(SHORT_BREAK_DURATION, "short break")
-    long_break = Interval(LONG_BREAK_DURATION, "long break")
+    work_time = Interval(WORK_TIME, "work")
+    short_break = Interval(SHORT_BREAK_TIME, "short break")
+    long_break = Interval(LONG_BREAK_TIME, "long break")
 
     while True:
         clear()
         print("POMODORO TIMER")
-        print(f"[j] Work time ({WORK_TIME_DURATION} minutes)")
-        print(f"[k] Short break ({SHORT_BREAK_DURATION} minutes)")
-        print(f"[l] Long break ({LONG_BREAK_DURATION} minutes)")
+        print(f"[j] Work time ({WORK_TIME} minutes)")
+        print(f"[k] Short break ({SHORT_BREAK_TIME} minutes)")
+        print(f"[l] Long break ({LONG_BREAK_TIME} minutes)")
         print("[q] Quit")
         char = getch().lower()
 
@@ -73,7 +73,8 @@ def main():
             start_interval(work_time)
             os.system(f"zenity --icon-name=emblem-success --warning \
                        --width=200 --text \
-                       'WORK TIME OVER\n{WORK_TIME_DURATION} minutes has passed'")
+                       'WORK TIME OVER\n\
+                       {WORK_TIME} minutes has passed'")
 
         # ===============
         # = SHORT BREAK =
@@ -82,7 +83,8 @@ def main():
             start_interval(short_break)
             os.system(f"zenity --icon-name=emblem-information --warning \
                        --width=200 --text \
-                       'SHORT BREAK OVER\n{SHORT_BREAK_DURATION} minutes has passed'")
+                       'SHORT BREAK OVER\n\
+                       {SHORT_BREAK_TIME} minutes has passed'")
 
         # ===============
         # = LONG BREAK  =
@@ -91,7 +93,8 @@ def main():
             start_interval(long_break)
             os.system(f"zenity --icon-name=emblem-information --warning \
                        --width=200 --text \
-                       'LONG BREAK OVER\n{LONG_BREAK_DURATION} minutes has passed'")
+                       'LONG BREAK OVER\n\
+                       {LONG_BREAK_TIME} minutes has passed'")
 
         # ===============
         # = QUIT        =
