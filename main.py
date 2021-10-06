@@ -1,10 +1,11 @@
 import time
 import os
+import math as m
 
 # Durations for each Pomodoro clock part
-WORK_TIME = 25
-SHORT_BREAK = 5
-LONG_BREAK = 15
+WORK_TIME_DURATION = 25
+SHORT_BREAK_DURATION = 5
+LONG_BREAK_DURATION = 15
 
 
 def clear():
@@ -12,18 +13,56 @@ def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def main():
-    clock_hands = ("-", "\\", "|", "/", "-", "\\", "|", "/")
-    start_time = time.perf_counter()
+class Interval:
+    def __init__(self, duration, session_type):
+        # self.duration is the length of the interval in minutes
+        self.duration = duration
+        self.session_type = session_type
 
-    while True:
+
+def start_interval(interval):
+    """Start an interval (Pomodoro, short break or long break)"""
+    clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
+
+    start_time = time.perf_counter()
+    elapsed_time = 0
+
+    duration_seconds = interval.duration * 60
+
+    while elapsed_time < duration_seconds:
+
+        # For loop for the fancy "clock" animation
         for i in range(len(clock_hands)):
             current_time = time.perf_counter()
             elapsed_time = current_time - start_time
+            remaining_time = duration_seconds - elapsed_time
+
+            seconds = m.ceil(remaining_time) % 60
+            minutes = m.ceil(remaining_time) // 60
 
             clear()
-            print(f"({clock_hands[i]}) {elapsed_time:0.0f}s")
+            print(f"{interval.session_type}")
+            print(f"[{clock_hands[i]}] ", end="")
+            print(f"{minutes}m {seconds}s")
+
             time.sleep(0.50)
+
+    return True
+
+
+def main():
+    work_time = Interval(WORK_TIME_DURATION, "work")
+    short_break = Interval(SHORT_BREAK_DURATION, "short break")
+    long_break = Interval(LONG_BREAK_DURATION, "long break")
+
+    start_interval(work_time)
+    start_interval(short_break)
+    start_interval(work_time)
+    start_interval(short_break)
+    start_interval(work_time)
+    start_interval(short_break)
+    start_interval(work_time)
+    start_interval(long_break)
 
 
 if __name__ == "__main__":
