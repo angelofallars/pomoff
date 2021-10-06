@@ -87,8 +87,9 @@ def main():
         clear()
 
         print("POMOFF")
-        print(f"[s] 4-Pom Session ({cf.work_time * 4}m + \
-{cf.short_break_time * 3}m)")
+        print(f"[s] {cf.session_intervals}-Pom Session \
+({cf.work_time * cf.session_intervals}m + \
+{cf.short_break_time * (cf.session_intervals - 1)}m)")
         print(f"[j] Work time ({cf.work_time}m)")
         print(f"[k] Short break ({cf.short_break_time}m)")
         print(f"[l] Long break ({cf.long_break_time}m)")
@@ -100,14 +101,14 @@ def main():
         # = SESSION     =
         # ===============
         if char == "s":
-            for i in range(4):
+            for i in range(cf.session_intervals):
                 start_interval(work_time)
                 broadcast_ending(work_time)
 
-                # The last break should be a long break
-                if i < 3:
+                if i < cf.session_intervals - 1:
                     start_interval(short_break)
                     broadcast_ending(short_break)
+                # The last break should be a long break
                 else:
                     start_interval(long_break)
                     broadcast_ending(long_break)
