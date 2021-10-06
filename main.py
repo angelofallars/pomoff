@@ -61,8 +61,8 @@ def main():
         clear()
         print("POMODORO TIMER")
         print(f"[j] Work time ({WORK_TIME_DURATION} minutes)")
-        print(f"[k] Short break ({WORK_TIME_DURATION} minutes)")
-        print(f"[l] Long break ({WORK_TIME_DURATION} minutes)")
+        print(f"[k] Short break ({SHORT_BREAK_DURATION} minutes)")
+        print(f"[l] Long break ({LONG_BREAK_DURATION} minutes)")
         print("[q] Quit")
         char = getch().lower()
 
