@@ -102,7 +102,7 @@ def main():
         print(f"[s] {cf.session_intervals}-Pom Session \
 ({cf.work_time * cf.session_intervals}m + \
 {cf.short_break_time * (cf.session_intervals - 1)}m)")
-        print(f"[j] Work time ({cf.work_time}m)")
+        print(f"[j] Work ({cf.work_time}m)")
         print(f"[k] Short break ({cf.short_break_time}m)")
         print(f"[l] Long break ({cf.long_break_time}m)")
         print("[q] Quit")
