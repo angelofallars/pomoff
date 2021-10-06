@@ -1,3 +1,5 @@
+#!/bin/python3
+
 import time
 import os
 import math as m
@@ -12,11 +14,13 @@ def clear():
 
 class Interval:
     def __init__(self, duration, session_type, end_icon="emblem_information"):
-        # self.duration is the length of the interval in minutes
+        # length of the interval in minutes
         self.duration = duration
+
+        # the type of session, work, short/long break
         self.session_type = session_type
 
-        # end_icon is the name of the icon used for the zenity end message
+        # name of the icon used for the zenity end message
         self.end_icon = end_icon
 
 
@@ -81,13 +85,15 @@ def main():
 
     while True:
         clear()
-        print("POMODORO TIMER")
-        print(f"[s] 4-Pom Session ({cf.work_time * 4} minutes + \
-{cf.short_break_time * 3} minutes)")
-        print(f"[j] Work time ({cf.work_time} minutes)")
-        print(f"[k] Short break ({cf.short_break_time} minutes)")
-        print(f"[l] Long break ({cf.long_break_time} minutes)")
+
+        print("POMOFF")
+        print(f"[s] 4-Pom Session ({cf.work_time * 4}m + \
+{cf.short_break_time * 3}m)")
+        print(f"[j] Work time ({cf.work_time}m)")
+        print(f"[k] Short break ({cf.short_break_time}m)")
+        print(f"[l] Long break ({cf.long_break_time}m)")
         print("[q] Quit")
+
         char = getch().lower()
 
         # ===============
