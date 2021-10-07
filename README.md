@@ -22,7 +22,7 @@ cd pomoff
 python3 ./main.py
 ```
 
-### Contributing
+## Contributing
 
 Have any ideas on how to make the code better? Feel free to contribute code by
 making a fork and a pull request, I'd appreciate it.
