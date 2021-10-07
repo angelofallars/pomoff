@@ -1,11 +1,16 @@
-# 🍅 Pomoff
+<h2 align="center">🍅 Pomoff</h1>
 
-![screenshot](https://i.imgur.com/fyQTU5x.png)
+<img src="https://i.imgur.com/fyQTU5x.png" alt="pomoff command line interface" align="right" height="240px">
 
-Pomoff is a minimalist pomodoro timer made in Python.
+**Pomoff**, a minimalist Pomodoro timer made in `Python`.
 
 - Configurable durations for work, short break and long break in config.py
 - Pop-up notifications when each interval is done
+- Easy to hack and make your own changes
+
+<br>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 ## Dependencies
 
@@ -26,3 +31,5 @@ python3 ./main.py
 
 Have any ideas on how to make the code better? Feel free to contribute code by
 making a fork and a pull request, I'd appreciate it.
+
+<a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
