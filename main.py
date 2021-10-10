@@ -5,6 +5,7 @@ import os
 import math as m
 from getch import getch
 import config as cf
+from playsound import playsound
 
 
 def clear():
@@ -74,6 +75,9 @@ def broadcast(text, icon="emblem_information"):
     args
       text - The text that will be displayed on the message window
       icon - The icon beside the text"""
+
+    # play sound on interval end
+    playsound('./sound/bell_counter.wav')
 
     os.system(f"zenity --icon-name={icon} --warning \
                --width=200 --text '{text}'")
