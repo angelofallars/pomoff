@@ -76,8 +76,8 @@ def broadcast(text, icon="emblem_information"):
       text - The text that will be displayed on the message window
       icon - The icon beside the text"""
 
-    # play sound on interval end
-    playsound('./sound/bell_counter.wav')
+    # play sound on interval end (asynchronously)
+    playsound('./sound/bell_counter.wav', block=False)
 
     os.system(f"zenity --icon-name={icon} --warning \
                --width=200 --text '{text}'")
