@@ -19,6 +19,11 @@ python3
 zenity
 ```
 
+Pip dependencies:
+```
+playsound
+```
+
 ## Run
 
 ```bash
