@@ -1,5 +1,4 @@
 #!/bin/python3
-import math as m
 import config.config as cf
 import helpers.interval as interval
 import helpers.colors as c

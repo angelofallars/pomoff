@@ -7,6 +7,7 @@ sys.path.append("..")
 
 import helpers.colors as c
 from config.config import end_sound
+from config.config import notify_icon
 from helpers.notify import broadcast
 from helpers.clear import clear
 from helpers.sound import play_sound
@@ -67,5 +68,6 @@ class Interval:
 
         play_sound(end_sound)
         broadcast(text_head=f"{self.session_type.upper()} OVER",
-                         text_body=f"{self.duration} minutes have passed.")
+                  text_body=f"{self.duration} minutes have passed.",
+                  icon=notify_icon)
         return 0
