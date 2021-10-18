@@ -10,6 +10,8 @@ import colorama
 # Colors for the terminal
 RED = colorama.Fore.RED
 GREEN = colorama.Fore.GREEN
+BOLD = "\033[1m"
+DIM = colorama.Style.DIM
 RESET = colorama.Style.RESET_ALL
 
 
@@ -52,8 +54,10 @@ def start_interval(interval):
 
     # Last time is for the clock hands to keep it turning at a steady rate
     last_time = 0
-
     duration_seconds = interval.duration * 60
+
+    clear()
+    print(f"{RED}🍅{RESET} {BOLD}{interval.session_type.upper()}{RESET}")
 
     while elapsed_time < duration_seconds:
 
@@ -74,10 +78,9 @@ def start_interval(interval):
         seconds = m.ceil(remaining_time) % 60
         minutes = m.ceil(remaining_time) // 60
 
-        clear()
-        print(f"{RED}🍅{RESET} - {interval.session_type}")
-        print(f"{GREEN}[{clock_hands[counter]}]{RESET} ", end="")
-        print(f"{minutes}m {seconds}s")
+        # Print the fancy animation and time left, updated
+        print(f"   [{RED}{clock_hands[counter]}{RESET}] {DIM}{minutes}m {seconds}s{RESET}     ",
+        end="\r")
 
         time.sleep(0.25)
 
@@ -113,14 +116,14 @@ def main():
     while True:
         clear()
 
-        print("POMOFF")
-        print(f"[s] {cf.session_intervals}-Pom Session \
-({cf.work_time * cf.session_intervals}m + \
-{cf.short_break_time * (cf.session_intervals - 1)}m)")
-        print(f"[j] Work ({cf.work_time}m)")
-        print(f"[k] Short break ({cf.short_break_time}m)")
-        print(f"[l] Long break ({cf.long_break_time}m)")
-        print("[q] Quit")
+        print(f"{RED}{BOLD}POMOFF{RESET}") #
+        print(f"[{RED}s{RESET}] {cf.session_intervals}-Pom Session \
+{DIM}({cf.work_time * cf.session_intervals}m + \
+{cf.short_break_time * (cf.session_intervals - 1)}m){RESET}")
+        print(f"[{RED}j{RESET}] Work {DIM}({cf.work_time}m){RESET}")
+        print(f"[{RED}k{RESET}] Short break {DIM}({cf.short_break_time}m){RESET}")
+        print(f"[{RED}l{RESET}] Long break {DIM}({cf.long_break_time}m){RESET}")
+        print(f"[{RED}q{RESET}] Quit")
 
         char = getch().lower()
 
