@@ -1,12 +1,11 @@
 import time
 import math as m
 
-# Necessary to get config from another directory
-import sys
-sys.path.append("..")
+from sys import path
+path.append("..")
+import config.config as cf
 
 import modules.colors as c
-import config.config as cf
 from modules.notify import broadcast
 from modules.clear import clear
 from modules.sound import play_sound

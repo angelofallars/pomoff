@@ -16,7 +16,7 @@
 
 ```
 python3
-sox
+mpv
 ```
 
 ### Pip dependencies

@@ -1,5 +1,9 @@
 import os
 
+from sys import path
+path.append("..")
+import config.config as cf
+
 def play_sound(sound_file):
     """Play a sound from the program's /assets/audio directory
 
@@ -11,4 +15,4 @@ def play_sound(sound_file):
         sound_file = os.path.join(program_directory, "../assets/audio/", sound_file)
 
         # Use sox to play sound
-        os.system(f"play -v 4 {sound_file} > /dev/null 2>&1 &")
+        os.system(f"mpv {sound_file} --volume={cf.sound_volume} > /dev/null 2>&1 &")
