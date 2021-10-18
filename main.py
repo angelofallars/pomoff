@@ -3,8 +3,8 @@
 import time
 import os
 import math as m
-from getch import getch
-import config as cf
+from helpers.getch import getch
+import config.config as cf
 import colorama
 
 # Colors for the terminal
