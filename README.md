@@ -19,6 +19,14 @@ python3
 sox
 ```
 
+### Pip dependencies
+
+```
+colorama
+```
+
+(Install with `python3 -m pip install colorama`)
+
 ## Run
 
 ```bash

@@ -5,6 +5,12 @@ import os
 import math as m
 from getch import getch
 import config as cf
+import colorama
+
+# Colors for the terminal
+RED = colorama.Fore.RED
+GREEN = colorama.Fore.GREEN
+RESET = colorama.Style.RESET_ALL
 
 
 def clear():
@@ -69,8 +75,8 @@ def start_interval(interval):
         minutes = m.ceil(remaining_time) // 60
 
         clear()
-        print(f"🍅 - {interval.session_type}")
-        print(f"[{clock_hands[counter]}] ", end="")
+        print(f"{RED}🍅{RESET} - {interval.session_type}")
+        print(f"{GREEN}[{clock_hands[counter]}]{RESET} ", end="")
         print(f"{minutes}m {seconds}s")
 
         time.sleep(0.25)
