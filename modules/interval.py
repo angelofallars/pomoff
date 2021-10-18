@@ -5,12 +5,12 @@ import math as m
 import sys
 sys.path.append("..")
 
-import helpers.colors as c
+import modules.colors as c
 from config.config import end_sound
 from config.config import notify_icon
-from helpers.notify import broadcast
-from helpers.clear import clear
-from helpers.sound import play_sound
+from modules.notify import broadcast
+from modules.clear import clear
+from modules.sound import play_sound
 
 
 class Interval:
