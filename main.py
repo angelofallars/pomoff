@@ -29,6 +29,52 @@ class Interval:
         self.session_type = session_type
 
 
+    def start(self):
+        """Start this Pomodoro interval."""
+        clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
+
+        # Counter is for changing the clock hands
+        counter = 0
+
+        start_time = time.perf_counter()
+        elapsed_time = 0
+
+        # Last time is for the clock hands to keep it turning at a steady rate
+        last_time = 0
+        duration_seconds = self.duration * 60
+
+        # Print the session type
+        clear()
+        print(f"{RED}🍅{RESET} {BOLD}{self.session_type.upper()}{RESET}")
+
+        while elapsed_time < duration_seconds:
+
+            current_time = time.perf_counter()
+            elapsed_time = current_time - start_time
+            remaining_time = duration_seconds - elapsed_time
+
+            # Iterate through the clock hands animation
+            if elapsed_time >= last_time + 0.5:
+                counter += 1
+                last_time = elapsed_time
+
+                if counter >= len(clock_hands):
+                    counter = 0
+
+            # Ceiling instead of round so that the starting time is "25m 0s"
+            # instead of "24m 60s"
+            seconds = m.ceil(remaining_time) % 60
+            minutes = m.ceil(remaining_time) // 60
+
+            # Print the fancy animation and time left, updated
+            print(f"   [{RED}{clock_hands[counter]}{RESET}] {DIM}{minutes}m {seconds}s{RESET}     ",
+            end="\r")
+
+            time.sleep(0.25)
+
+        return True
+
+
 def play_sound(sound_file):
     """Play a sound from the program's /sound directory
 
@@ -40,51 +86,6 @@ def play_sound(sound_file):
 
     # Use sox to play sound
     os.system(f"play -v 1.2 {sound_file} > /dev/null 2>&1 &")
-
-
-def start_interval(interval):
-    """Start an interval (Pomodoro, short break or long break)"""
-    clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
-
-    # Counter is for changing the clock hands
-    counter = 0
-
-    start_time = time.perf_counter()
-    elapsed_time = 0
-
-    # Last time is for the clock hands to keep it turning at a steady rate
-    last_time = 0
-    duration_seconds = interval.duration * 60
-
-    clear()
-    print(f"{RED}🍅{RESET} {BOLD}{interval.session_type.upper()}{RESET}")
-
-    while elapsed_time < duration_seconds:
-
-        current_time = time.perf_counter()
-        elapsed_time = current_time - start_time
-        remaining_time = duration_seconds - elapsed_time
-
-        # Iterate through the clock hands animation
-        if elapsed_time >= last_time + 0.5:
-            counter += 1
-            last_time = elapsed_time
-
-            if counter >= len(clock_hands):
-                counter = 0
-
-        # Ceiling instead of round so that the starting time is "25m 0s"
-        # instead of "24m 60s"
-        seconds = m.ceil(remaining_time) % 60
-        minutes = m.ceil(remaining_time) // 60
-
-        # Print the fancy animation and time left, updated
-        print(f"   [{RED}{clock_hands[counter]}{RESET}] {DIM}{minutes}m {seconds}s{RESET}     ",
-        end="\r")
-
-        time.sleep(0.25)
-
-    return True
 
 
 def broadcast(text_head, text_body):
@@ -116,7 +117,7 @@ def main():
     while True:
         clear()
 
-        print(f"{RED}{BOLD}POMOFF{RESET}") #
+        print(f"{RED}{BOLD}POMOFF{RESET}")
         print(f"[{RED}s{RESET}] {cf.session_intervals}-Pom Session \
 {DIM}({cf.work_time * cf.session_intervals}m + \
 {cf.short_break_time * (cf.session_intervals - 1)}m){RESET}")
@@ -132,36 +133,36 @@ def main():
         # ===============
         if char == "s":
             for i in range(cf.session_intervals):
-                start_interval(work_time)
+                work_time.start()
                 broadcast_ending(work_time)
 
                 if i < cf.session_intervals - 1:
-                    start_interval(short_break)
+                    short_break.start()
                     broadcast_ending(short_break)
                 # The last break should be a long break
                 else:
-                    start_interval(long_break)
+                    long_break.start()
                     broadcast_ending(long_break)
 
         # ===============
         # = WORK TIME   =
         # ===============
         if char == "j":
-            start_interval(work_time)
+            work_time.start()
             broadcast_ending(work_time)
 
         # ===============
         # = SHORT BREAK =
         # ===============
         if char == "k":
-            start_interval(short_break)
+            short_break.start()
             broadcast_ending(short_break)
 
         # ===============
         # = LONG BREAK  =
         # ===============
         if char == "l":
-            start_interval(long_break)
+            long_break.start()
             broadcast_ending(long_break)
 
         # ===============
