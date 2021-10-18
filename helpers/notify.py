@@ -8,7 +8,8 @@ def broadcast(text_head, text_body=None, icon=None):
       text-body - The body of the notification
       icon - The icon to display"""
 
+    # Get the file for the icons
     program_directory = os.path.dirname(__file__)
-    icon_file = os.path.join(program_directory, "../assets/", icon)
+    icon_file = os.path.join(program_directory, "../assets/icons/", icon)
 
     os.system(f'notify-send "{text_head}" "{text_body}" --icon={icon_file}')
