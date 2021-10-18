@@ -5,7 +5,6 @@ import os
 import math as m
 from getch import getch
 import config as cf
-from playsound import playsound
 
 
 def clear():

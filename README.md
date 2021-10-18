@@ -17,11 +17,7 @@
 ```
 python3
 zenity
-```
-
-Pip dependencies:
-```
-playsound
+sox
 ```
 
 ## Run
