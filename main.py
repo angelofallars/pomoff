@@ -88,7 +88,7 @@ def broadcast(text, icon="emblem_information"):
       text - The text that will be displayed on the message window
       icon - The icon beside the text"""
 
-    play_sound("bike_ding.wav")
+    play_sound(cf.end_sound)
 
     os.system(f"zenity --icon-name={icon} --warning \
                --width=200 --text '{text}'")
