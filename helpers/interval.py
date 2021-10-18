@@ -5,11 +5,11 @@ import math as m
 import sys
 sys.path.append("..")
 
+import helpers.colors as c
 from config.config import end_sound
-import notify
-import colors as c
-from clear import clear
-from sound import play_sound
+from helpers.notify import broadcast
+from helpers.clear import clear
+from helpers.sound import play_sound
 
 
 class Interval:
@@ -66,6 +66,6 @@ class Interval:
             time.sleep(0.25)
 
         play_sound(end_sound)
-        notify.broadcast(text_head=f"{self.session_type.upper()} OVER",
+        broadcast(text_head=f"{self.session_type.upper()} OVER",
                          text_body=f"{self.duration} minutes have passed.")
         return 0
