@@ -13,15 +13,12 @@ def clear():
 
 
 class Interval:
-    def __init__(self, duration, session_type, end_icon="emblem_information"):
+    def __init__(self, duration, session_type):
         # length of the interval in minutes
         self.duration = duration
 
         # the type of session, work, short/long break
         self.session_type = session_type
-
-        # name of the icon used for the zenity end message
-        self.end_icon = end_icon
 
 
 def play_sound(sound_file):
@@ -103,7 +100,7 @@ def broadcast_ending(interval: Interval):
 
 
 def main():
-    work_time = Interval(cf.work_time, "work", end_icon="emblem-success")
+    work_time = Interval(cf.work_time, "work")
     short_break = Interval(cf.short_break_time, "short break")
     long_break = Interval(cf.long_break_time, "long break")
 
