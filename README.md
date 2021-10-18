@@ -1,6 +1,6 @@
 <h2 align="center">🍅 Pomoff</h1>
 
-<img src="https://i.imgur.com/fyQTU5x.png" alt="pomoff command line interface" align="right" height="240px">
+<img src="https://i.imgur.com/nXkjOqU.png" alt="pomoff command line interface" align="right" height="240px">
 
 **Pomoff**, a minimalist Pomodoro timer made in `Python`.
 
