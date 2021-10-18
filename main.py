@@ -81,17 +81,14 @@ def start_interval(interval):
     return True
 
 
-def broadcast(text, icon="emblem_information"):
-    """Broadcast a message warning to the user with Zenity.
+def broadcast(text_head, text_body):
+    """Broadcast a message warning to the user with notify-send.
 
     args
-      text - The text that will be displayed on the message window
-      icon - The icon beside the text"""
+      text_head - The title of the notification
+      text-body - The body of the notification"""
 
-    play_sound(cf.end_sound)
-
-    os.system(f"zenity --icon-name={icon} --warning \
-               --width=200 --text '{text}'")
+    os.system(f'notify-send "{text_head}" "{text_body}"')
 
 
 def broadcast_ending(interval: Interval):
@@ -100,9 +97,9 @@ def broadcast_ending(interval: Interval):
     args
       interval - The interval, can be work, short break or long break"""
 
-    broadcast(text=f"{interval.session_type.upper()} OVER\n\
-{interval.duration} minutes have passed.",
-              icon=interval.end_icon)
+    play_sound(cf.end_sound)
+    broadcast(text_head=f"{interval.session_type.upper()} OVER",
+              text_body=f"{interval.duration} minutes have passed.")
 
 
 def main():

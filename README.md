@@ -5,7 +5,7 @@
 **Pomoff**, a minimalist Pomodoro timer made in `Python`.
 
 - Configurable durations for work, short break and long break in config.py
-- Pop-up notifications when each interval is done
+- Sound + notifications when each interval is done
 - Easy to hack and make your own changes
 
 <br>
@@ -16,7 +16,6 @@
 
 ```
 python3
-zenity
 sox
 ```
 
