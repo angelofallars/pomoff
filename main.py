@@ -72,13 +72,13 @@ class Interval:
 
             time.sleep(0.25)
 
-        return True
+        return 0
 
 
 def play_sound(sound_file):
     """Play a sound from the program's /sound directory
 
-    Input:
+    parameters
         sound_file - name of the sound file to play in /sound"""
 
     program_directory = os.path.dirname(__file__)
@@ -91,7 +91,7 @@ def play_sound(sound_file):
 def broadcast(text_head, text_body):
     """Broadcast a message warning to the user with notify-send.
 
-    args
+    parameters
       text_head - The title of the notification
       text-body - The body of the notification"""
 
@@ -99,9 +99,9 @@ def broadcast(text_head, text_body):
 
 
 def broadcast_ending(interval: Interval):
-    """Broadcast the ending of an interval with Zenity.
+    """Broadcast the ending of an interval with notify-send.
 
-    args
+    parameters
       interval - The interval, can be work, short break or long break"""
 
     play_sound(cf.end_sound)
@@ -117,6 +117,7 @@ def main():
     while True:
         clear()
 
+        # Menu
         print(f"{RED}{BOLD}POMOFF{RESET}")
         print(f"[{RED}s{RESET}] {cf.session_intervals}-Pom Session \
 {DIM}({cf.work_time * cf.session_intervals}m + \
