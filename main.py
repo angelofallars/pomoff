@@ -85,7 +85,7 @@ def play_sound(sound_file):
     sound_file = os.path.join(program_directory, "sound/", sound_file)
 
     # Use sox to play sound
-    os.system(f"play -v 1.2 {sound_file} > /dev/null 2>&1 &")
+    os.system(f"play -v 4 {sound_file} > /dev/null 2>&1 &")
 
 
 def broadcast(text_head, text_body):
