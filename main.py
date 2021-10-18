@@ -25,6 +25,19 @@ class Interval:
         self.end_icon = end_icon
 
 
+def play_sound(sound_file):
+    """Play a sound from the program's /sound directory
+
+    Input:
+        sound_file - name of the sound file to play in /sound"""
+
+    program_directory = os.path.dirname(__file__)
+    sound_file = os.path.join(program_directory, "sound/", sound_file)
+
+    # Use sox to play sound
+    os.system(f"play -v 1.2 {sound_file} > /dev/null 2>&1 &")
+
+
 def start_interval(interval):
     """Start an interval (Pomodoro, short break or long break)"""
     clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
@@ -76,8 +89,7 @@ def broadcast(text, icon="emblem_information"):
       text - The text that will be displayed on the message window
       icon - The icon beside the text"""
 
-    # play sound on interval end (asynchronously)
-    playsound('./sound/bell_counter.wav', block=False)
+    play_sound("bike_ding.wav")
 
     os.system(f"zenity --icon-name={icon} --warning \
                --width=200 --text '{text}'")
