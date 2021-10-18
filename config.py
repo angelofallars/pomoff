@@ -4,7 +4,7 @@
 # default - long_break_time = 15
 work_time = 25
 short_break_time = 5
-long_break_time = 15
+long_break_time = 20
 
 # Number of work intervals for the session
 # default - session_intervals = 4
