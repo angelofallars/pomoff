@@ -6,8 +6,7 @@ import sys
 sys.path.append("..")
 
 import modules.colors as c
-from config.config import end_sound
-from config.config import notify_icon
+import config.config as cf
 from modules.notify import broadcast
 from modules.clear import clear
 from modules.sound import play_sound
@@ -66,8 +65,8 @@ class Interval:
 
             time.sleep(0.25)
 
-        play_sound(end_sound)
+        play_sound(cf.end_sound)
         broadcast(text_head=f"{self.session_type.upper()} OVER",
                   text_body=f"{self.duration} minutes have passed.",
-                  icon=notify_icon)
+                  icon=cf.notify_icon)
         return 0
