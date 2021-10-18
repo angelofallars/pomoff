@@ -68,3 +68,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+"""CREDITS
+"Bike, Bell Ding, Single, 01-01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+"Bell, Counter, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+"""
