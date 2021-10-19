@@ -12,6 +12,18 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
+## Quick start 
+you can install it  and run it like system command on __Linux__
+
+```bash
+$ chmod +x install.sh 
+$ sudo ./install.sh
+
+$ pomoff
+```
+
+to uninstall, run `sudo ./uninstall.sh`
+
 ## Dependencies
 
 ```
@@ -47,6 +59,8 @@ python3 ./main.py -W or --work [Integer] --> [To configure timer]
     WORK 
     [/] 15m 00s
 ```
+
+
 
 ## Contributing
 
