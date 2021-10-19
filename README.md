@@ -32,10 +32,13 @@ To uninstall, run `bash ./uninstall.sh`.
 After installing, simply type `pomoff` into the command line.
 
 ``` 
-Usage: POMOFF [option] ...
+Usage: pomoff [option] ...
+  -h, help               see this help page
+  -w, work               launch a work interval
+  -b, break, shortbreak  launch a short break interval
+ -lb, longbreak          launch a long break interval
 
-            -h --help See the help page
-            -w --work [integer] Launch the timer
+The config file is located in the /config directory of the pomoff folder.""")
 ```
 
 ## Contributing
