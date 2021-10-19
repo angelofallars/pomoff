@@ -38,7 +38,7 @@ Usage: pomoff [option] ...
   -b, break, shortbreak  launch a short break interval
  -lb, longbreak          launch a long break interval
 
-The config file is located in the /config directory of the pomoff folder.""")
+The config file is located in the /config directory of the pomoff folder.
 ```
 
 ## Contributing
