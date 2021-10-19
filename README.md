@@ -17,7 +17,7 @@
 ```bash
 $ git clone https://github.com/angelofallars/pomoff
 $ cd pomoff
-$ sudo bash ./install.sh
+$ bash ./install.sh
 ```
 
 To uninstall, run `sudo bash ./uninstall.sh`.
