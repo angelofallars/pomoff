@@ -41,6 +41,11 @@ Usage: pomoff [option] ...
 The config file is located in the /config directory of the pomoff folder.
 ```
 
+## Configuration
+
+In the `config.py` file, you can edit the duration of the work and break
+intervals, change the sound and volume of the end-of-interval bell and more.
+
 ## Contributing
 
 Have any ideas on how to make the code better? Feel free to contribute code by
