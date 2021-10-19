@@ -1,16 +1,14 @@
 import time
 import math as m
 
-# Necessary to get config from another directory
-import sys
-sys.path.append("..")
+from sys import path
+path.append("..")
+import config.config as cf
 
-import helpers.colors as c
-from config.config import end_sound
-from config.config import notify_icon
-from helpers.notify import broadcast
-from helpers.clear import clear
-from helpers.sound import play_sound
+import modules.colors as c
+from modules.notify import broadcast
+from modules.clear import clear
+from modules.sound import play_sound
 
 
 class Interval:
@@ -66,8 +64,8 @@ class Interval:
 
             time.sleep(0.25)
 
-        play_sound(end_sound)
+        play_sound(cf.end_sound)
         broadcast(text_head=f"{self.session_type.upper()} OVER",
                   text_body=f"{self.duration} minutes have passed.",
-                  icon=notify_icon)
+                  icon=cf.notify_icon)
         return 0

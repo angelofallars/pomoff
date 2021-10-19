@@ -1,10 +1,9 @@
 #!/bin/python3
 import config.config as cf
-import helpers.interval as interval
-import helpers.colors as c
-from helpers.clear import clear
-from helpers.getch import getch
-import os
+import modules.interval as interval
+import modules.colors as c
+from modules.clear import clear
+from modules.getch import getch
 import sys
 
 def launch(time):
