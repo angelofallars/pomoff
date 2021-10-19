@@ -20,7 +20,7 @@ $ cd pomoff
 $ bash ./install.sh
 ```
 
-To uninstall, run `sudo bash ./uninstall.sh`.
+To uninstall, run `bash ./uninstall.sh`.
 
 ## Dependencies
 

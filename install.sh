@@ -4,7 +4,7 @@ red='\e[0;31m'
 green='\e[0;32m'
 default='\e[0;m'
 
-echo "Installing Pomoff..."
+echo -e "Installing ${green}Pomoff${default}..."
 
 # Install dependencies
 if [ -f requirements.txt ]; then
@@ -12,7 +12,7 @@ if [ -f requirements.txt ]; then
 fi
 
 # Warning if MPV not installed
-which mpv || echo "${red}Warning:${default} mpv is not installed. Audio will not play."
+which mpv > /dev/null 2>&1 || echo "${red}Warning:${default} mpv is not installed. Audio will not play."
 
 # Add executable permission in script
 chmod +x main.py
