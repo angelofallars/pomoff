@@ -21,10 +21,10 @@ def usage():
     Print the usage text.
     """
     print(f"Usage: pomoff [option] ...")
-    print( """   -h, help         see this help page
-   -w, work         launch a work interval
-   -b, break        launch a short break interval
-  -lb, longbreak    launch a long break interval
+    print( """  -h, help               see this help page
+  -w, work               launch a work interval
+  -b, break, shortbreak  launch a short break interval
+ -lb, longbreak          launch a long break interval
 
 The config file is located in the /config directory of the pomoff folder.""")
 
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     elif '-w' in sys.argv or 'work' in sys.argv:
         work_time.start()
 
-    elif '-b' in sys.argv or 'break' in sys.argv:
+    elif '-b' in sys.argv or 'break' in sys.argv or 'shortbreak' in sys.argv:
         short_break.start()
 
     elif '-lb' in sys.argv or 'longbreak' in sys.argv:

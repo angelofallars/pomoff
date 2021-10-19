@@ -11,6 +11,13 @@ from modules.clear import clear
 from modules.sound import play_sound
 
 
+def capitalize_first(sentence):
+    """Capitalize only the first word of a sentence."""
+    word_list = sentence.split()
+    word_list[0] = word_list[0].capitalize()
+    return " ".join(word_list)
+
+
 class Interval:
     def __init__(self, duration, session_type):
         # length of the interval in minutes
@@ -21,6 +28,10 @@ class Interval:
 
 
     def start(self):
+        broadcast(text_head=f"Pomoff",
+                  text_body=f"{capitalize_first(self.session_type)} ({self.duration}m) has started.",
+                  icon=cf.notify_icon)
+
         """Start this Pomodoro interval."""
         clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
 
@@ -65,7 +76,7 @@ class Interval:
             time.sleep(0.25)
 
         play_sound(cf.end_sound)
-        broadcast(text_head=f"{self.session_type.upper()} OVER",
-                  text_body=f"{self.duration} minutes have passed.",
+        broadcast(text_head=f"Pomoff",
+                  text_body=f"{capitalize_first(self.session_type)} ({self.duration}m) has ended.",
                   icon=cf.notify_icon)
         return 0
