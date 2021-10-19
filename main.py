@@ -4,7 +4,14 @@ import modules.interval as interval
 import modules.colors as c
 from modules.clear import clear
 from modules.getch import getch
+import sys
 
+def launch(time):
+    """
+    A function to launch the timer
+    """
+    chrono = interval.Interval(time, "work")
+    chrono.start()
 
 def main():
     work_time = interval.Interval(cf.work_time, "work")
@@ -13,7 +20,6 @@ def main():
 
     while True:
         clear()
-
         # Menu
         print(f"{c.RED}{c.BOLD}POMOFF{c.RESET}")
         print(f"[{c.RED}s{c.RESET}] {cf.session_intervals}-Pom Session \
@@ -62,12 +68,47 @@ def main():
         # ===============
         if char == "q":
             break
-
     return 0
 
 
 if __name__ == "__main__":
-    main()
+
+    # ===============
+    # = MAIN MENU   =
+    # ===============
+    if len(sys.argv) == 1:
+        main()
+
+    # ===============
+    # = HELP PAGE   =
+    # ===============
+    elif '-h' in sys.argv or '--help' in  sys.argv: 
+        print(f"\n{c.GREEN}{c.BOLD}Usage: POMOFF [option] ...{c.RESET}")
+        print( """
+            -h --help See the help page
+            -w --work [integer] Launch the timer
+        """)
+
+    # ===================
+    # = CONFIGURE TIMER =
+    # ===================
+    elif '-W' in sys.argv or '--work' in sys.argv:
+        if len(sys.argv) > 2:
+            if sys.argv[2].isnumeric() :
+                launch(int(sys.argv[2]))
+            else :
+                print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
+                print("""Try: \n$  --help for more information \n """)
+        else:
+            print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
+            print("""Try: \n$  --help for more information \n """)
+
+    # ===================
+    # = INVALID ARGUMENT =
+    # ===================   
+    else :
+        print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
+        print("""Try: \n$  --help for more information \n """)
 
 """CREDITS
 "Bike, Bell Ding, Single, 01-01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
