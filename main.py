@@ -84,8 +84,7 @@ if __name__ == "__main__":
     # ===============
     elif '-h' in sys.argv or '--help' in  sys.argv: 
         print(f"\n{c.GREEN}{c.BOLD}Usage: POMOFF [option] ...{c.RESET}")
-        print( """
-            -h --help See the help page
+        print( """-h --help See the help page
             -w --work [integer] Launch the timer
         """)
 
