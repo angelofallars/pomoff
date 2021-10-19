@@ -4,7 +4,9 @@ import modules.interval as interval
 import modules.colors as c
 from modules.clear import clear
 from modules.getch import getch
+from modules.notify import broadcast
 import sys
+
 
 def launch(time):
     """
@@ -13,10 +15,21 @@ def launch(time):
     chrono = interval.Interval(time, "work")
     chrono.start()
 
+
+def usage():
+    """
+    Print the usage text.
+    """
+    print(f"Usage: pomoff [option] ...")
+    print( """   -h, help         see this help page
+   -w, work         launch a work interval
+   -b, break        launch a short break interval
+  -lb, longbreak    launch a long break interval
+
+The config file is located in the /config directory of the pomoff folder.""")
+
+
 def main():
-    work_time = interval.Interval(cf.work_time, "work")
-    short_break = interval.Interval(cf.short_break_time, "short break")
-    long_break = interval.Interval(cf.long_break_time, "long break")
 
     while True:
         clear()
@@ -68,10 +81,14 @@ def main():
         # ===============
         if char == "q":
             break
+
     return 0
 
 
 if __name__ == "__main__":
+    work_time = interval.Interval(cf.work_time, "work")
+    short_break = interval.Interval(cf.short_break_time, "short break")
+    long_break = interval.Interval(cf.long_break_time, "long break")
 
     # ===============
     # = MAIN MENU   =
@@ -79,35 +96,23 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         main()
 
-    # ===============
-    # = HELP PAGE   =
-    # ===============
-    elif '-h' in sys.argv or '--help' in  sys.argv: 
-        print(f"\n{c.GREEN}{c.BOLD}Usage: POMOFF [option] ...{c.RESET}")
-        print( """-h --help See the help page
-            -w --work [integer] Launch the timer
-        """)
-
     # ===================
     # = CONFIGURE TIMER =
     # ===================
-    elif '-W' in sys.argv or '--work' in sys.argv:
-        if len(sys.argv) > 2:
-            if sys.argv[2].isnumeric() :
-                launch(int(sys.argv[2]))
-            else :
-                print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
-                print("""Try: \n$  --help for more information \n """)
-        else:
-            print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
-            print("""Try: \n$  --help for more information \n """)
+    elif '-w' in sys.argv or 'work' in sys.argv:
+        work_time.start()
+
+    elif '-b' in sys.argv or 'break' in sys.argv:
+        short_break.start()
+
+    elif '-lb' in sys.argv or 'longbreak' in sys.argv:
+        long_break.start()
 
     # ===================
-    # = INVALID ARGUMENT =
+    # = INVALID ARGUMENT=
     # ===================   
     else :
-        print(f"{c.RED} {c.BOLD} -- Invalid argument {c.RESET}") 
-        print("""Try: \n$  --help for more information \n """)
+        usage()
 
 """CREDITS
 "Bike, Bell Ding, Single, 01-01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
