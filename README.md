@@ -12,41 +12,24 @@
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-## Quick start 
-you can install it  and run it like system command on __Linux__
+## Installation
 
 ```bash
-$ chmod +x install.sh 
-$ sudo ./install.sh
-
-$ pomoff
+$ git clone https://github.com/angelofallars/pomoff
+$ cd pomoff
+$ sudo bash ./install.sh
 ```
 
-to uninstall, run `sudo ./uninstall.sh`
+To uninstall, run `sudo bash ./uninstall.sh`.
 
 ## Dependencies
 
-```
-python3
-mpv
-```
-
-### Pip dependencies
-
-```
-colorama
-```
-
-(Install with `python3 -m pip install colorama`)
+- `python3`
+- `mpv`
 
 ## Run
 
-```bash
-git clone https://github.com/angelofallars/pomoff
-cd pomoff
-python3 ./main.py
-```
-python3 ./main.py -H or --help --> [To see help page]
+After installing, simply type `pomoff` into the command line.
 
 ``` 
 Usage: POMOFF [option] ...
@@ -54,17 +37,10 @@ Usage: POMOFF [option] ...
             -h --help See the help page
             -w --work [integer] Launch the timer
 ```
-python3 ./main.py -W or --work [Integer] --> [To configure timer]
-```
-    WORK 
-    [/] 15m 00s
-```
-
-
 
 ## Contributing
 
 Have any ideas on how to make the code better? Feel free to contribute code by
-making a fork and a pull request, I'd appreciate it.
+making a fork and a pull request on the `dev` branch.
 
 <a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
