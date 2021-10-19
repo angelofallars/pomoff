@@ -15,9 +15,9 @@
 ## Installation
 
 ```bash
-$ git clone https://github.com/angelofallars/pomoff
-$ cd pomoff
-$ bash ./install.sh
+git clone https://github.com/angelofallars/pomoff
+cd pomoff
+bash ./install.sh
 ```
 
 To uninstall, run `bash ./uninstall.sh`.
