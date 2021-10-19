@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
-#!/usr/bin/python3
-#!/bin/python3
 import config.config as cf
 import modules.interval as interval
 import modules.colors as c
