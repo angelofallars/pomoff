@@ -1,10 +1,5 @@
 import time
 import math as m
-
-from sys import path
-path.append("..")
-import config.config as cf
-
 import modules.colors as c
 from modules.notify import broadcast
 from modules.clear import clear
@@ -19,18 +14,21 @@ def capitalize_first(sentence):
 
 
 class Interval:
-    def __init__(self, duration, session_type):
+    def __init__(self, duration, session_type, config):
         # length of the interval in minutes
         self.duration = duration
 
         # the type of session, work, short/long break
         self.session_type = session_type
 
+        # the config file
+        self.cf = config
+
 
     def start(self):
         broadcast(text_head=f"Pomoff",
                   text_body=f"{capitalize_first(self.session_type)} ({self.duration}m) has started.",
-                  icon=cf.notify_icon)
+                  icon=self.cf.notify_icon)
 
         """Start this Pomodoro interval."""
         clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
@@ -75,8 +73,8 @@ class Interval:
 
             time.sleep(0.25)
 
-        play_sound(cf.end_sound)
+        play_sound(self.cf.end_sound)
         broadcast(text_head=f"Pomoff",
                   text_body=f"{capitalize_first(self.session_type)} ({self.duration}m) has ended.",
-                  icon=cf.notify_icon)
+                  icon=self.cf.notify_icon)
         return 0

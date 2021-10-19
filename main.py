@@ -4,7 +4,6 @@ import modules.interval as interval
 import modules.colors as c
 from modules.clear import clear
 from modules.getch import getch
-from modules.notify import broadcast
 import sys
 
 
@@ -12,7 +11,7 @@ def launch(time):
     """
     A function to launch the timer
     """
-    chrono = interval.Interval(time, "work")
+    chrono = interval.Interval(time, "work", cf)
     chrono.start()
 
 
@@ -86,9 +85,9 @@ def main():
 
 
 if __name__ == "__main__":
-    work_time = interval.Interval(cf.work_time, "work")
-    short_break = interval.Interval(cf.short_break_time, "short break")
-    long_break = interval.Interval(cf.long_break_time, "long break")
+    work_time = interval.Interval(cf.work_time, "work", cf)
+    short_break = interval.Interval(cf.short_break_time, "short break", cf)
+    long_break = interval.Interval(cf.long_break_time, "long break", cf)
 
     # ===============
     # = MAIN MENU   =
