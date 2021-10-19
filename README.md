@@ -34,6 +34,19 @@ git clone https://github.com/angelofallars/pomoff
 cd pomoff
 python3 ./main.py
 ```
+python3 ./main.py -H or --help --> [To see help page]
+
+``` 
+Usage: POMOFF [option] ...
+
+            -h --help See the help page
+            -w --work [integer] Launch the timer
+```
+python3 ./main.py -W or --work [Integer] --> [To configure timer]
+```
+    WORK 
+    [/] 15m 00s
+```
 
 ## Contributing
 
