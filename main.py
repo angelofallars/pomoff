@@ -7,14 +7,6 @@ from modules.getch import getch
 import sys
 
 
-def launch(time):
-    """
-    A function to launch the timer
-    """
-    chrono = interval.Interval(time, "work", cf)
-    chrono.start()
-
-
 def usage():
     """
     Print the usage text.
