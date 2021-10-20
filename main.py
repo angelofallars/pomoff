@@ -88,6 +88,13 @@ def main():
 
 
 if __name__ == "__main__":
+
+    # Debug mode
+    if "--debug" in sys.argv:
+        cf.work_time = 3 / 60
+        cf.short_break_time = 3 / 60
+        cf.long_break_time = 3 / 60
+
     work_time = interval.Interval(cf.work_time, "work", cf)
     short_break = interval.Interval(cf.short_break_time, "short break", cf)
     long_break = interval.Interval(cf.long_break_time, "long break", cf)
@@ -95,7 +102,7 @@ if __name__ == "__main__":
     # ===============
     # = MAIN MENU   =
     # ===============
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 1 or "--debug" in sys.argv:
         main()
 
     # ===================
