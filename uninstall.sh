@@ -1,6 +1,5 @@
 #!/bin/bash
 
-red='\e[0;31m'
 green='\e[0;32m'
 default='\e[0;m'
 

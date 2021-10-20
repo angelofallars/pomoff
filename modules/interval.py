@@ -1,8 +1,9 @@
-import time
 import math as m
+import time
+
 import modules.colors as c
-from modules.notify import broadcast
 from modules.clear import clear
+from modules.notify import broadcast
 from modules.sound import play_sound
 
 
@@ -25,10 +26,12 @@ class Interval:
         self.cf = config
 
     def start(self):
-        broadcast(text_head="Pomoff",
-                  text_body=f"{capitalize_first(self.session_type)} \
+        broadcast(
+            text_head="Pomoff",
+            text_body=f"{capitalize_first(self.session_type)} \
 ({self.duration}m) has started.",
-                  icon=self.cf.notify_icon)
+            icon=self.cf.notify_icon
+        )
 
         """Start this Pomodoro interval."""
         clock_hands = ("|", "/", "-", "\\", "|", "/", "-", "\\")
@@ -45,8 +48,10 @@ class Interval:
 
         # Print the session type
         clear()
-        print(f"{c.RED}🍅{c.RESET} \
-{c.BOLD}{self.session_type.upper()}{c.RESET}")
+        print(
+            f"{c.RED}🍅{c.RESET} \
+{c.BOLD}{self.session_type.upper()}{c.RESET}"
+        )
 
         while elapsed_time < duration_seconds:
 
@@ -68,15 +73,20 @@ class Interval:
             minutes = m.ceil(remaining_time) // 60
 
             # Print the fancy animation and time left, updated
-            print(f"   [{c.RED}{clock_hands[counter]}{c.RESET}] {c.DIM}{minutes}m \
+            print(
+                f"   [{c.RED}{clock_hands[counter]}{c.RESET}] {c.DIM}{minutes}m \
 {seconds}s{c.RESET}     ",
-                  end="\r")
+                end="\r"
+            )
 
             time.sleep(0.25)
 
         play_sound(self.cf.end_sound, self.cf.sound_volume)
-        broadcast(text_head="Pomoff",
-                  text_body=f"{capitalize_first(self.session_type)} \
+        broadcast(
+            text_head="Pomoff",
+            text_body=f"{capitalize_first(self.session_type)} \
 ({self.duration}m) has ended.",
-                  icon=self.cf.notify_icon)
+            icon=self.cf.notify_icon
+        )
+
         return 0

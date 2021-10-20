@@ -1,4 +1,4 @@
-<h2 align="center">🍅 Pomoff</h1>
+<h1 align="center">🍅 Pomoff</h1>
 
 <img src="https://i.imgur.com/nXkjOqU.png" alt="pomoff command line interface" align="right" height="240px">
 
@@ -31,7 +31,7 @@ To uninstall, run `bash ./uninstall.sh`.
 
 After installing, simply type `pomoff` into the command line.
 
-``` 
+```bash
 Usage: pomoff [option] ...
   -h, help               see this help page
   -w, work               launch a work interval

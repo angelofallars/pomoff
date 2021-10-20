@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+import sys
+
 import config.config as cf
-import modules.interval as interval
 import modules.colors as c
+import modules.interval as interval
 from modules.clear import clear
 from modules.getch import getch
-import sys
 
 
 def usage():
@@ -12,12 +13,14 @@ def usage():
     Print the usage text.
     """
     print("Usage: pomoff [option] ...")
-    print("""  -h, help               see this help page
+    print(
+        """  -h, help               see this help page
   -w, work               launch a work interval
   -b, break, shortbreak  launch a short break interval
  -lb, longbreak          launch a long break interval
 
-The config file is located in the /config directory of the pomoff folder.""")
+The config file is located in the /config directory of the pomoff folder."""
+    )
 
 
 def main():
@@ -26,15 +29,23 @@ def main():
         clear()
         # Menu
         print(f"{c.RED}{c.BOLD}POMOFF{c.RESET}")
-        print(f"[{c.RED}s{c.RESET}] {cf.session_intervals}-Pom Session \
+        print(
+            f"[{c.RED}s{c.RESET}] {cf.session_intervals}-Pom Session \
 {c.DIM}({cf.work_time * cf.session_intervals}m + \
-{cf.short_break_time * (cf.session_intervals - 1)}m){c.RESET}")
-        print(f"[{c.RED}j{c.RESET}] Work \
-{c.DIM}({cf.work_time}m){c.RESET}")
-        print(f"[{c.RED}k{c.RESET}] Short break \
-{c.DIM}({cf.short_break_time}m){c.RESET}")
-        print(f"[{c.RED}l{c.RESET}] Long break \
-{c.DIM}({cf.long_break_time}m){c.RESET}")
+{cf.short_break_time * (cf.session_intervals - 1)}m){c.RESET}"
+        )
+        print(
+            f"[{c.RED}j{c.RESET}] Work \
+{c.DIM}({cf.work_time}m){c.RESET}"
+        )
+        print(
+            f"[{c.RED}k{c.RESET}] Short break \
+{c.DIM}({cf.short_break_time}m){c.RESET}"
+        )
+        print(
+            f"[{c.RED}l{c.RESET}] Long break \
+{c.DIM}({cf.long_break_time}m){c.RESET}"
+        )
         print(f"[{c.RED}q{c.RESET}] Quit")
 
         char = getch().lower()
@@ -100,13 +111,13 @@ if __name__ == "__main__":
     # ===================
     # = CONFIGURE TIMER =
     # ===================
-    elif '-w' in sys.argv or 'work' in sys.argv:
+    elif "-w" in sys.argv or "work" in sys.argv:
         work_time.start()
 
-    elif '-b' in sys.argv or 'break' in sys.argv or 'shortbreak' in sys.argv:
+    elif "-b" in sys.argv or "break" in sys.argv or "shortbreak" in sys.argv:
         short_break.start()
 
-    elif '-lb' in sys.argv or 'longbreak' in sys.argv:
+    elif "-lb" in sys.argv or "longbreak" in sys.argv:
         long_break.start()
 
     # ===================

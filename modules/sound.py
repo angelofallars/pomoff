@@ -9,11 +9,15 @@ def play_sound(sound_file, volume=100):
 
     if sound_file:
         program_directory = os.path.dirname(__file__)
-        sound_file = os.path.join(program_directory,
-                                  "../assets/audio/",
-                                  sound_file)
+        sound_file = os.path.join(
+                     program_directory,
+                     "../assets/audio/",
+                     sound_file
+                    )
 
-        # Use sox to play sound
-        os.system(f"mpv {sound_file} \
-                    --volume={volume} \
-                    > /dev/null 2>&1 &")
+        # Use mpv to play sound
+        os.system(
+            f"mpv {sound_file} \
+            --volume={volume} \
+            > /dev/null 2>&1 &"
+        )

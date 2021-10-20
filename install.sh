@@ -23,6 +23,6 @@ if [ -f /usr/bin/pomoff ]; then
 fi
 
 # Add symbolic links
-sudo ln -sf `pwd`/main.py /usr/bin/pomoff && \
+sudo ln -sf "$(pwd)/main.py" "/usr/bin/pomoff" && \
 echo -e "Pomoff installed successfully. To run, type ${green}pomoff.${default}" || \
 echo -e "${red}ERROR:${default} It seems like Pomoff failed to install."
