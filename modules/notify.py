@@ -1,5 +1,6 @@
 import os
 
+
 def broadcast(text_head, text_body=None, icon=None):
     """Broadcast a message warning to the user with notify-send.
 

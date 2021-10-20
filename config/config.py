@@ -22,6 +22,6 @@ sound_volume = 100
 
 # The icon for notifications
 # in the /assets directory
-# default - "tomato-256.png" 
+# default - "tomato-256.png"
 # set to None to disable
 notify_icon = "tomato-256.png"

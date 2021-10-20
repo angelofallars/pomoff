@@ -19,8 +19,8 @@ def usage():
     """
     Print the usage text.
     """
-    print(f"Usage: pomoff [option] ...")
-    print( """  -h, help               see this help page
+    print("Usage: pomoff [option] ...")
+    print("""  -h, help               see this help page
   -w, work               launch a work interval
   -b, break, shortbreak  launch a short break interval
  -lb, longbreak          launch a long break interval
@@ -37,9 +37,12 @@ def main():
         print(f"[{c.RED}s{c.RESET}] {cf.session_intervals}-Pom Session \
 {c.DIM}({cf.work_time * cf.session_intervals}m + \
 {cf.short_break_time * (cf.session_intervals - 1)}m){c.RESET}")
-        print(f"[{c.RED}j{c.RESET}] Work {c.DIM}({cf.work_time}m){c.RESET}")
-        print(f"[{c.RED}k{c.RESET}] Short break {c.DIM}({cf.short_break_time}m){c.RESET}")
-        print(f"[{c.RED}l{c.RESET}] Long break {c.DIM}({cf.long_break_time}m){c.RESET}")
+        print(f"[{c.RED}j{c.RESET}] Work \
+{c.DIM}({cf.work_time}m){c.RESET}")
+        print(f"[{c.RED}k{c.RESET}] Short break \
+{c.DIM}({cf.short_break_time}m){c.RESET}")
+        print(f"[{c.RED}l{c.RESET}] Long break \
+{c.DIM}({cf.long_break_time}m){c.RESET}")
         print(f"[{c.RED}q{c.RESET}] Quit")
 
         char = getch().lower()
@@ -109,11 +112,12 @@ if __name__ == "__main__":
 
     # ===================
     # = INVALID ARGUMENT=
-    # ===================   
-    else :
+    # ===================
+    else:
         usage()
 
 """CREDITS
-"Bike, Bell Ding, Single, 01-01.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
-"Bell, Counter, A.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org
+Freesound.org
+"Bike, Bell Ding, Single, 01-01.wav" by InspectorJ (www.jshaw.co.uk)
+"Bell, Counter, A.wav" by InspectorJ (www.jshaw.co.uk)
 """
