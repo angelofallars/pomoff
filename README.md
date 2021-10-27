@@ -32,13 +32,20 @@ To uninstall, run `bash ./uninstall.sh`.
 After installing, simply type `pomoff` into the command line.
 
 ```bash
+    ____  ____  __  _______  ____________
+   / __ \/ __ \/  |/  / __ \/ ____/ ____/
+  / /_/ / / / / /|_/ / / / / /_  / /_    
+ / ____/ /_/ / /  / / /_/ / __/ / __/    
+/_/    \____/_/  /_/\____/_/   /_/       
+                                         
+
 Usage: pomoff [option] ...
   -h, help               see this help page
   -w, work               launch a work interval
   -b, break, shortbreak  launch a short break interval
  -lb, longbreak          launch a long break interval
 
-The config file is located in the /config directory of the pomoff folder.
+
 ```
 
 ## Configuration

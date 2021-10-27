@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import sys
 
+import pyfiglet
+  
 import config.config as cf
 import modules.colors as c
 import modules.interval as interval
@@ -10,8 +12,11 @@ from modules.getch import getch
 
 def usage():
     """
-    Print the usage text.
+    Print the usage text  and the text "POMOFF with pyfiglet"
     """
+
+    result = pyfiglet.figlet_format("POMOFF", font = "slant"  )
+    print(result)
     print("Usage: pomoff [option] ...")
     print(
         """  -h, help               see this help page
@@ -21,7 +26,6 @@ def usage():
 
 The config file is located in the /config directory of the pomoff folder."""
     )
-
 
 def main():
 
@@ -86,7 +90,6 @@ def main():
         # ===============
         if char == "q":
             break
-
     return 0
 
 
