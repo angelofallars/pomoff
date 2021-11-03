@@ -14,6 +14,12 @@
 
 ## Installation
 
+### [Axyl OS](https://axyl-os.github.io/)
+
+`sudo pacman -S axyl-pomoff-git`
+
+### Other operating systems (Linux)
+
 ```bash
 git clone https://github.com/angelofallars/pomoff
 cd pomoff
