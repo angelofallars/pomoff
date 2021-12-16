@@ -54,7 +54,15 @@ intervals, change the sound and volume of the end-of-interval bell and more.
 
 ## Contributing
 
-Have any ideas on how to make the code better? Feel free to contribute code by
-making a fork and a pull request on the `dev` branch.
+Just make sure to develop and make pull requests on the `dev` branch instead of
+the `main` branch.
+
+**Contribute to pomoff and get your awesome profile picture displayed here!**
+
+<a href="https://github.com/angelofallars/pomoff/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=angelofallars/pomoff" />
+</a>
+
+*Made with [contrib.rocks](https://contrib.rocks).*
 
 <a href="./LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
